@@ -4,10 +4,10 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StateBase : MonoBehaviour
+public class TestState : MonoBehaviour
 {
-    public StateMachineBase stateMachine;
-    public TransitionBase[] transitions;
+    public StateMachine stateMachine;
+    public Transition[] transitions;
     public StateType stateType;
     public GameEvent[] onStateEnterEvents;
     public GameEvent[] onStateLeaveEvents;
@@ -36,12 +36,12 @@ public class StateBase : MonoBehaviour
 
     public virtual void OnStateStay()
     {
-
+        Debug.Log($"State { stateType}: OnStateStay");
     }
 
     public virtual void OnStateExit()
     {
-        Debug.Log($"State {stateType}: OnStateExit");
+        Debug.LogError($"State {stateType}: OnStateExit");
         for(int i = 0; i < transitions.Length; ++i)
         {
             GameEventManager.Instance.UnRegisterEvent(transitions[i].trasitionEvent, actionList[i]);
@@ -52,4 +52,11 @@ public class StateBase : MonoBehaviour
             GameEventManager.Instance.SendEvent(gameEvent);
         }
     }
+}
+
+[System.Serializable]
+public class Transition
+{
+    public GameEvent trasitionEvent;
+    public StateType nextStateType;
 }

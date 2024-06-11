@@ -170,6 +170,8 @@ MonoBehaviour:
   transitions:
   - trasitionEvent: 3
     nextStateType: 3
+  - trasitionEvent: 1
+    nextStateType: 1
   stateType: 2
   onStateEnterEvents: 
   onStateLeaveEvents: 
@@ -202,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1b9b64af5011b42b37e17758184b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useTestState: 1
 --- !u!4 &668319635
 Transform:
   m_ObjectHideFlags: 0
@@ -362,6 +365,8 @@ MonoBehaviour:
   transitions:
   - trasitionEvent: 1
     nextStateType: 1
+  - trasitionEvent: 2
+    nextStateType: 2
   stateType: 3
   onStateEnterEvents: 
   onStateLeaveEvents: 
