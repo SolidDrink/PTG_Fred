@@ -9,6 +9,7 @@ public class StateB : State
     {
         base.OnStateEnter();
         Debug.LogWarning("StateB Enter");
+        GameEventManager.Instance.SendEvent(GameEvent.OnStateChange, "B");
     }
 
     public override void Stay()

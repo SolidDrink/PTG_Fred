@@ -9,8 +9,8 @@ public class TestState : MonoBehaviour
     public StateMachine stateMachine;
     public Transition[] transitions;
     public StateType stateType;
-    public GameEvent[] onStateEnterEvents;
-    public GameEvent[] onStateLeaveEvents;
+    public GameEventData[] onStateEnterEvents;
+    public GameEventData[] onStateLeaveEvents;
     private List<UnityAction<string>> actionList = new List<UnityAction<string>>();
     private void Start()
     {
@@ -28,9 +28,9 @@ public class TestState : MonoBehaviour
             });
             GameEventManager.Instance.RegisterEvent(transition.trasitionEvent, actionList[actionList.Count - 1]);
         }
-        foreach (GameEvent gameEvent in onStateEnterEvents)
+        foreach (GameEventData eventData in onStateEnterEvents)
         {
-            GameEventManager.Instance.SendEvent(gameEvent);
+            GameEventManager.Instance.SendEvent(eventData.gameEvent, eventData.parameter);
         }
     }
 
@@ -47,12 +47,20 @@ public class TestState : MonoBehaviour
             GameEventManager.Instance.UnRegisterEvent(transitions[i].trasitionEvent, actionList[i]);
         }
         actionList.Clear();
-        foreach (GameEvent gameEvent in onStateLeaveEvents)
+        foreach (GameEventData eventData in onStateLeaveEvents)
         {
-            GameEventManager.Instance.SendEvent(gameEvent);
+            GameEventManager.Instance.SendEvent(eventData.gameEvent, eventData.parameter);
         }
     }
 }
+
+[System.Serializable]
+public class GameEventData 
+{
+    public GameEvent gameEvent;
+    public string parameter;
+}
+
 
 [System.Serializable]
 public class Transition

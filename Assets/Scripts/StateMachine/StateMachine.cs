@@ -20,7 +20,10 @@ public class StateMachine : MonoBehaviour
             }
             SwitchState(StateType.A);
         }
-        SwitchState(new StateA());
+        else
+        {
+            SwitchState(new StateA());
+        }
     }
     private void Update()
     {

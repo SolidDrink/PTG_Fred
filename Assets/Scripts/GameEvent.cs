@@ -9,4 +9,7 @@ public enum GameEvent
     On_Button_A_Pressed = 1,
     ON_Button_B_Pressed = 2,
     ON_Button_C_Pressed = 3,
+
+    OnStateChange = 101,
+    OnTestStateChange = 102,
 }

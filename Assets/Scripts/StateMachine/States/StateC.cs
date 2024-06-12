@@ -9,6 +9,7 @@ public class StateC : State
     {
         base.OnStateEnter();
         Debug.LogWarning("StateC Enter");
+        GameEventManager.Instance.SendEvent(GameEvent.OnStateChange, "C");
     }
 
     public override void Stay()
